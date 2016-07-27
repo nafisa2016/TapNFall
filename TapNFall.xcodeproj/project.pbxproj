@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -205,7 +205,7 @@
 				};
 			};
 			buildConfigurationList = 22CF890E1D00123A00F7F594 /* Build configuration list for PBXProject "TapNFall" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -484,6 +484,7 @@
 				22CF893D1D00123A00F7F594 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22CF893E1D00123A00F7F594 /* Build configuration list for PBXNativeTarget "TapNFallTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +493,7 @@
 				22CF89401D00123A00F7F594 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22CF89411D00123A00F7F594 /* Build configuration list for PBXNativeTarget "TapNFallUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +502,7 @@
 				22CF89431D00123A00F7F594 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

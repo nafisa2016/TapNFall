@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     }
     
     //MARK: tap to let the blurred view fall
-    func tapFallAction(sender: UITapGestureRecognizer){
+    func tapFallAction(_ sender: UITapGestureRecognizer){
         
         //remove subview with tag 100
         if  self.view.viewWithTag(100) != nil {
@@ -70,18 +70,18 @@ class ViewController: UIViewController {
         
         
         //UIVisualEffect
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = CGRectMake(0,0,self.view.frame.width,self.view.frame.height - UIApplication.sharedApplication().statusBarFrame.size.height)
+        blurView.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height - UIApplication.shared.statusBarFrame.size.height)
         
-        blurView.transform = CGAffineTransformMakeTranslation(0, 10 * (-self.view.frame.height))
+        blurView.transform = CGAffineTransform(translationX: 0, y: 10 * (-self.view.frame.height))
         blurView.tag = 100
         
         self.view.addSubview(blurView)
         
         //vibrancy can only be used with blur effect
-        let vibrancyEffect = UIVibrancyEffect(forBlurEffect:blurEffect)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect:blurEffect)
         let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
         vibrancyView.frame = blurView.bounds
         
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         let vibrancyEffectLabel = UILabel()
         vibrancyEffectLabel.text = "Message"
         vibrancyEffectLabel.center = self.view.center
-        vibrancyEffectLabel.font = UIFont.systemFontOfSize(32.0)
+        vibrancyEffectLabel.font = UIFont.systemFont(ofSize: 32.0)
         vibrancyEffectLabel.sizeToFit()
         
         // Add label to the vibrancy view
@@ -106,7 +106,7 @@ class ViewController: UIViewController {
         
         //add gravity behavior
         let gravity = UIGravityBehavior(items: [blurView])
-        let vector = CGVectorMake(0.5,0.5)
+        let vector = CGVector(dx: 0.5,dy: 0.5)
         gravity.gravityDirection = vector
         animator!.addBehavior(gravity)
         
@@ -114,7 +114,7 @@ class ViewController: UIViewController {
         //add collision behavior
         let collision = UICollisionBehavior(items: [blurView])
         collision.translatesReferenceBoundsIntoBoundary = true
-        collision.collisionMode = UICollisionBehaviorMode.Everything
+        collision.collisionMode = UICollisionBehaviorMode.everything
         animator!.addBehavior(collision)
         
         //add item behavior
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
     }
     
     //MARK: tap to move up the blurred view
-    func tapMoveUpAction(sender: UITapGestureRecognizer){
+    func tapMoveUpAction(_ sender: UITapGestureRecognizer){
         
         guard let fallenView =  self.view.viewWithTag(100) else{
             print("no such view exists")
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
         
         //gravity
         let gravityUp = UIGravityBehavior(items: [fallenView])
-        let vector = CGVectorMake(0.0,-1.0)
+        let vector = CGVector(dx: 0.0,dy: -1.0)
         gravityUp.gravityDirection = vector
         animator!.addBehavior(gravityUp)
         
@@ -156,19 +156,19 @@ class ViewController: UIViewController {
     }
     
     //MARK: restrict auto rotation
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         
-        switch UIDevice.currentDevice().orientation {
-        case .Portrait:
+        switch UIDevice.current.orientation {
+        case .portrait:
             return true
         default:
             return false
         }
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         
-        return [ UIInterfaceOrientationMask.Portrait]
+        return [ UIInterfaceOrientationMask.portrait]
         
     }
     
